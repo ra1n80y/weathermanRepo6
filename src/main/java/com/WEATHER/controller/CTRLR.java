@@ -2,8 +2,6 @@ package com.WEATHER.controller;
 
 import com.WEATHER.pojo.Tourist;
 import com.WEATHER.service.TouristImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +25,6 @@ public class CTRLR
         System.out.println ("http://localhost:8080/WEATHER/api/deleteID/0");
     }
 
-    //SL4J Logger obj
-    private static final Logger logger= LoggerFactory.getLogger (CTRLR.class);
 
     @Autowired
     private TouristImpl service;
@@ -43,12 +39,9 @@ public class CTRLR
     @GetMapping("getAll")//Request data from server(fetch resource)
     public ResponseEntity<?> getAllTourists()
     {
-        logger.debug ("getAll REST endpoint called");
 
-        logger.info ("fetchAllTourists() invoked");
         List<Tourist> list = service.fetchAllTourists ();
 
-        logger.debug ("Request process complete");
         return new ResponseEntity<> (list, HttpStatus.OK);
     }
 

@@ -3,9 +3,7 @@ package com.WEATHER.pojo;
 import jakarta.persistence.*;
 import lombok.*;
 
- @Setter
-@Getter
-@ToString
+@Data
 @Table
 @Entity
 public class Tourist

@@ -3,8 +3,6 @@ package com.WEATHER.service;
 import com.WEATHER.dao.TouristREPO;
 import com.WEATHER.exception.TouristNotFoundException;
 import com.WEATHER.pojo.Tourist;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,8 +11,6 @@ import java.util.Optional;
 @Service
 public class TouristImpl implements ITourist
 {
-    private static final Logger logger= LoggerFactory.getLogger (TouristImpl.class);
-
     @Autowired
     private TouristREPO repo;
 
@@ -67,7 +63,6 @@ public class TouristImpl implements ITourist
     @Override
     public List<Tourist> fetchAllTourists()
     {
-        logger.debug ("fetchAllTourists() invoked");
         return repo.findAll ();
     }
 
