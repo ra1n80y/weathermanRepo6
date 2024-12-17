@@ -21,25 +21,24 @@ public class CTRLR
         System.out.println ("http://localhost:8080/WEATHER/api/getAll");
         System.out.println ("http://localhost:8080/WEATHER/api/getID/0");
         System.out.println ("http://localhost:8080/WEATHER/api/update");
-        System.out.println ("http://localhost:8080/WEATHER/api/idUpdate/0/0.0");
+        System.out.println ("http://localhost:8080/WEATHER/api/updateID/0/0.0");
         System.out.println ("http://localhost:8080/WEATHER/api/deleteID/0");
     }
-
-
+    
     @Autowired
     private TouristImpl service;
 
-    @PostMapping("enroll")//Send data to server(create/update resource)
+    @PostMapping("enroll")//Send data to DB-server(create/update resource)
     public ResponseEntity<String> enrollTourist(@RequestBody Tourist tourist)
     {
         String msg = service.registerTourist (tourist);
+
         return new ResponseEntity<> (msg, HttpStatus.OK);
     }
 
     @GetMapping("getAll")//Request data from server(fetch resource)
     public ResponseEntity<?> getAllTourists()
     {
-
         List<Tourist> list = service.fetchAllTourists ();
 
         return new ResponseEntity<> (list, HttpStatus.OK);
@@ -49,6 +48,7 @@ public class CTRLR
     public ResponseEntity<?>getTouristById(@PathVariable("ID") Integer ID)
     {
         Tourist tourist=service.fetchTouristById (ID);
+
         return new ResponseEntity<> (tourist, HttpStatus.OK);
     }
 
@@ -56,6 +56,7 @@ public class CTRLR
     public ResponseEntity<String>updateData(@RequestBody Tourist tourist)
     {
         String status=service.updateData (tourist);
+
         return new ResponseEntity<> (status, HttpStatus.OK);
     }
 
@@ -63,6 +64,7 @@ public class CTRLR
     public ResponseEntity<?>updateById(@PathVariable("ID") Integer ID,@PathVariable("budget") Double budget)
     {
         String tourist = service.updateById (ID,budget);
+
         return new ResponseEntity<> (tourist, HttpStatus.OK);
     }
 
@@ -70,6 +72,7 @@ public class CTRLR
     public ResponseEntity<String>deleteById(@PathVariable("ID") Integer ID)
     {
         String tourist = service.deleteTouristById (ID);
+
         return new ResponseEntity<> (tourist, HttpStatus.OK);
     }
 }
