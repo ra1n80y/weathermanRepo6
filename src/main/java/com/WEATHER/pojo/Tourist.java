@@ -14,7 +14,7 @@ public class Tourist
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer tid;
 

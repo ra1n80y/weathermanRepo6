@@ -31,6 +31,7 @@ public class CTRLR
     @PostMapping("enroll")//Send data to DB-server(create/update resource)
     public ResponseEntity<String> enrollTourist(@RequestBody Tourist tourist)
     {
+        //Invoke an API Tester for interfacing
         String msg = service.registerTourist (tourist);
 
         return new ResponseEntity<> (msg, HttpStatus.OK);
